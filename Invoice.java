@@ -1,20 +1,28 @@
-public class Invoice {
-    private int id;
-    private Customer customer;
+package Entity;
+
+import java.time.LocalDate;
+
+public class Invoice extends Customer {
+    private int id_Invoice;
     private double amount;
+    private LocalDate date;
 
-    public Invoice(int id, Customer customer, double amount) {
-        this.id = id;
-        this.customer = customer;
+    public Invoice() {
+    }
+
+    public Invoice(int id_Invoice, String name, int id_Customer, Gender gender, int discount, double amount, LocalDate date) {
+        super(name, id_Customer, gender, discount);
+        this.id_Invoice = id_Invoice;
         this.amount = amount;
+        this.date = date;
     }
 
-    public int getId() {
-        return id;
+    public int getId_Invoice() {
+        return id_Invoice;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public void setId_Invoice(int id_Invoice) {
+        this.id_Invoice = id_Invoice;
     }
 
     public double getAmount() {
@@ -25,29 +33,23 @@ public class Invoice {
         this.amount = amount;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public LocalDate getDate() {
+        return date;
     }
-    public int getCustomerId() {
-        return customer.getId();
-    }
-    public String getCustomerName() {
-        return customer.getName();
-    }
-    public double getCustomerDiscount() {
-        return customer.getDiscount();
-    }
-    public double getAmountAfterDiscount(){
-        amount = amount + (amount * getCustomerDiscount() / 100 );
-        return amount;
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     @Override
     public String toString() {
         return "Invoice{" +
-                "id=" + id +
-                ", customer=" + customer +
+                "id_Invoice=" + id_Invoice +
+                ", name=" + this.getName() +
+                ", gender=" + this.getGender() +
                 ", amount=" + amount +
+                ", amountDiscount=" + amountAfterDiscount() +
+                ", date=" + date +
                 '}';
     }
 }
