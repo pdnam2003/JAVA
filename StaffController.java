@@ -26,6 +26,11 @@ public static List<Staff> getByName(String Keyword) {
             .filter(s -> s.getName().toLowerCase().contains(Keyword.toLowerCase()))
             .collect(Collectors.toList());
 }
+ public static List<Staff> getById(String Keyword) {
+    return staffs.stream()
+            .filter(s -> s.getId().toLowerCase().contains(Keyword.toLowerCase()))
+            .collect(Collectors.toList());
+}
 
  }
 }
