@@ -20,6 +20,12 @@ public class StaffController {
       Optional<Staff> staffMaxPay = StaffController.staffs.stream()
              .max(Comparator.comparing(Staff::getPay));
       return staffMaxPay;
+  
+public static List<Staff> getByName(String Keyword) {
+    return staffs.stream()
+            .filter(s -> s.getName().toLowerCase().contains(Keyword.toLowerCase()))
+            .collect(Collectors.toList());
+}
 
  }
 }
