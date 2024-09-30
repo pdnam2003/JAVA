@@ -22,13 +22,21 @@ public class Staff extends Person {
     public void setId(int id) {
         this.id = id;
     }
+    
+    public int getName() {
+        return name;
+    }
+
+    public void setName(int name) {
+        this.Name = name;
+    }
 
     public String getSchool() {
         return School;
     }
 
     public void setSchool(String school) {
-        School = school;
+        this.School = school;
     }
 
     public double getPay() {
