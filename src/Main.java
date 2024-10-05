@@ -1,30 +1,54 @@
-import Entity.CurentAccount;
-import Entity.BankAccount;
-import Entity.SavingAccount;
+import Controller.AccountController;
+import Controller.CustomerController;
+import Controller.StaffController;
+import Entity.Account;
+import Entity.Customer;
+import Entity.Gender;
+import Entity.Staff;
+import Service.AccountService;
+import Service.CustomerService;
+import Service.StaffService;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        double ibal, damt, wamt;
-        ibal = 1000.00;
-        SavingAccount savingsAccount = new SavingAccount("SA001", ibal);
-        System.out.println("Savings A/c: Initial Balance: $" + ibal);
-        damt = 500.00;
-        savingsAccount.deposit(damt);
-        wamt = 250.00;
-        savingsAccount.withdraw(wamt);
-        ibal = 1600.00;
-        System.out.println("\nTry to withdraw: $" + wamt);
-        savingsAccount.withdraw(wamt);
-        System.out.println();
-        ibal = 5000.00;
-        CurentAccount currentAccount = new CurentAccount("CA001", ibal);
-        System.out.println("Current A/c: Initial Balance: $" + ibal);
-        damt = 2500.00;
-        currentAccount.deposit(1000);
-        wamt = 1250.00;
-        currentAccount.withdraw(3000);
-        wamt=6000;
-        System.out.println("\nTry to withdraw: $" + wamt);
-        savingsAccount.withdraw(wamt);
+        List<Customer> customers = new ArrayList<Customer>();
+        CustomerService cs = new CustomerService(customers);
+        CustomerController customerController = new CustomerController(customers,cs);
+
+        customers.add(new Customer(1,"vvdd","tinh", Gender.F));
+        customers.add(new Customer(2,"ccdd","trung",Gender.M));
+        Customer cus = CustomerController.getById(1);
+//        if(cus != null) {
+//            System.out.println(cus);
+//        }else{
+//            System.out.println("error");
+//        }
+        List<Staff>staffs = new ArrayList<Staff>();
+        StaffService ss = new StaffService(staffs);
+        StaffController staffController = new StaffController(staffs,ss);
+        staffs.add(new Staff(1,"so1","huhu", LocalDate.of(2000,4,5)));
+        staffs.add(new Staff(2,"so2","hehe", LocalDate.of(2003,11,18)));
+//
+//        if(staffs != null) {
+//            System.out.println(staffs);
+//        }else {
+//            System.out.println("error");
+//        }
+        List<Account>accounts = new ArrayList<Account>();
+        AccountService as = new AccountService(accounts);
+        AccountController accountController = new AccountController(accounts,as);
+        accounts.add(new Account(1,"acc1", CustomerController.getById(1),2000000,LocalDate.of(2018,10,10)));
+        accounts.add(new Account(2,"acc2",CustomerController.getById(2),1000000,LocalDate.of(2015,10,10)));
+
+        if(accounts != null) {
+            System.out.println(accounts);
+        }else {
+            System.out.println("error");
+        }
 
 
 
