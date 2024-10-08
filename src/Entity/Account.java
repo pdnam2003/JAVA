@@ -1,38 +1,32 @@
 package Entity;
 
-import java.time.LocalDate;
-
-
-public class Account {
+public class Account extends Customer{
     private int id;
-    private String accountNumber;
     private Customer customer;
     private double balance;
-    private LocalDate createAt;
 
-    public Account() {;}
-    public Account(int id, String accountNumber, Customer customer, double balance, LocalDate createAt) {
+
+    public Account(int id,  Customer customer, double balance) {
+
         this.id = id;
-        this.accountNumber = accountNumber;
         this.customer = customer;
         this.balance = balance;
-        this.createAt = createAt;
+    }
+    public Account() {;}
+    public Account(int id, Customer customer) {
+        super(id, customer.getName(), customer.getGender());
+        this.id = id;
+        this.customer = customer;
     }
 
+    @Override
     public int getId() {
         return id;
     }
 
+    @Override
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
     }
 
     public Customer getCustomer() {
@@ -51,24 +45,27 @@ public class Account {
         this.balance = balance;
     }
 
-    public LocalDate getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(LocalDate createAt) {
-        this.createAt = createAt;
-    }
-
     @Override
     public String toString() {
         return "Account{" +
                 "id=" + id +
-                ", accountNumber='" + accountNumber + '\'' +
                 ", customer=" + customer +
                 ", balance=" + balance +
-                ", createAt=" + createAt +
                 '}';
     }
-
-
+    public String getCustomerName(){
+        return customer.getName();
+    }
+    public double deposit(double amount){
+        return balance += amount;
+    }
+    private double withdraw(double amount){
+     if (balance>amount){
+         balance -=  amount;
+         return balance ;
+     }else {
+         System.out.println("error");
+         return balance;
+     }
+    }
 }

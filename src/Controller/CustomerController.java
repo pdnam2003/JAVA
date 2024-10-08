@@ -1,24 +1,18 @@
 package Controller;
 
-
 import Entity.Customer;
-import Service.CustomerService;
-
-import java.util.List;
+import Service.Customerservice;
 
 public class CustomerController {
-
-    private static CustomerService cs;
-
-    public CustomerController(List<Customer> customers, CustomerService cs) {
+    private static Customerservice cs;
+    public CustomerController(Customerservice cs){
         this.cs = cs;
-
     }
-    public static Customer  getById(int id) {
+    public  static Customer getById(int id){
         Customer customer = cs.getById(id);
-        if (customer != null) {
+        if(customer != null){
             return customer;
         }
-        return null;
+        return null ;
     }
 }
