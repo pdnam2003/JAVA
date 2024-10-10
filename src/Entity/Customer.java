@@ -1,22 +1,14 @@
 package Entity;
 
 public class Customer {
-    private int id;
-    private String name;
-    private Gender gender;
+   private String name;
+   private int id;
 
-    public  Customer(){;}
-    public Customer(int id, String name, Gender gender) {
-        this.id = id;
+
+   public Customer(){;}
+
+    public Customer(String name, int id) {
         this.name = name;
-        this.gender = gender;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
         this.id = id;
     }
 
@@ -28,19 +20,19 @@ public class Customer {
         this.name = name;
     }
 
-    public Gender getGender() {
-        return gender;
+    public CharSequence getId() {
+        return id;
     }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
         return "Customer{" +
-
-                " name='" + name + '\'' + "(id=" + id +
-                ")"     +     '}';
+                "name='" + name + '\'' +
+                ", id=" + id +
+                '}';
     }
 }
