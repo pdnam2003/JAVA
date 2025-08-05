@@ -1,0 +1,6 @@
+FastAPI
+SQLAlchemy
+mysqlclient
+pydantic
+uvicorn
+alembic
