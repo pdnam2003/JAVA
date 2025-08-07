@@ -1,0 +1,13 @@
+<h1>Danh sách sinh viên</h1>
+<a href="{% url 'student_create' %}">Thêm sinh viên mới</a>
+<ul>
+    {% for student in students %}
+        <li>
+            {{ student.name }} - {{ student.age }} tuổi - GPA: {{ student.gpa }}
+            <a href="{% url 'student_update' student.id %}">Sửa</a>
+            <a href="{% url 'student_delete' student.id %}">Xóa</a>
+        </li>
+    {% empty %}
+        <li>Chưa có sinh viên nào.</li>
+    {% endfor %}
+</ul>
